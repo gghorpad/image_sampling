@@ -1,12 +1,22 @@
-zalak_annotate = open('sampler_annotate_list.txt','r')
-zalak_raw = open('sampler_raw_list.txt','r')
+already_labeled = input('Have you already labeled some images in this section(yes/no) :')
 
-zalak_annotate_last = (str.split(zalak_annotate.read()))[-1][:-3]+'jpg'
-all_images = (str.split(zalak_raw.read()))
+if already_labeled == 'yes':
+    file_annotate = open('sampler_annotate_list.txt','r')
+    file_raw = open('sampler_raw_list.txt','r')
 
-last_labeled_index = all_images.index(zalak_annotate_last)
-sampling_rate = input('Enter sampling rate: ')
-sampled_images = all_images[last_labeled_index::sampling_rate]
+    annotate_last = (str.split(file_annotate.read()))[-1][:-3]+'jpg'
+    all_images = (str.split(file_raw.read()))
+
+    last_labeled_index = all_images.index(annotate_last)
+    sampling_rate = input('Enter sampling rate: ')
+    sampled_images = all_images[last_labeled_index::sampling_rate]
+    
+elif already_labeled == 'no':
+    file_raw = open('sampler_raw_list.txt','r')
+    all_images = (str.split(file_raw.read()))
+    last_labeled_index = 0
+    sampling_rate = input('Enter sampling rate: ')
+    sampled_images = all_images[last_labeled_index::sampling_rate]
 
 with open(f'sampled_image_srate_{sampling_rate}.txt', 'w') as f:
     for item in sampled_images:
