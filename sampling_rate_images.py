@@ -8,14 +8,14 @@ if already_labeled == 'yes':
     all_images = (str.split(file_raw.read()))
 
     last_labeled_index = all_images.index(annotate_last)
-    sampling_rate = input('Enter sampling rate: ')
+    sampling_rate = int(input('Enter sampling rate: '))
     sampled_images = all_images[last_labeled_index::sampling_rate]
     
 elif already_labeled == 'no':
     file_raw = open('sampler_raw_list.txt','r')
     all_images = (str.split(file_raw.read()))
     last_labeled_index = 0
-    sampling_rate = input('Enter sampling rate: ')
+    sampling_rate = int(input('Enter sampling rate: '))
     sampled_images = all_images[last_labeled_index::sampling_rate]
 
 with open(f'sampled_image_srate_{sampling_rate}.txt', 'w') as f:
