@@ -32,7 +32,7 @@ elif already_labeled == 'no':
         image_path2 = all_images[i+1]
         image_path3 = all_images[i+2]
         image_path4 = all_images[i+3]
-        image_path4 = all_images[i+4]
+        image_path5 = all_images[i+4]
         
         sampled_images.append(image_path1)
         sampled_images.append(image_path2)
